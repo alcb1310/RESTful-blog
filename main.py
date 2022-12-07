@@ -4,7 +4,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, URL
-from flask_ckeditor import CKEditor, CKEditorField
+from flask_ckeditor import CKEditor
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+PORT = os.getenv('PORT')
+print(PORT)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -71,4 +78,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=PORT)
